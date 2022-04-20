@@ -14,17 +14,21 @@ public class PhoneBillCalculatorExercise {
     static double planFee;
     static int overageMinutes;
     static double overageFee;
+    static double tax;
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        planFee = getPlanFee();
-        overageMinutes = getOverageMinutes();
+
         double extraUsageCharge = 0.25;
         double taxPercentage = 15;
 
-        overageFee = getOverageFee(planFee,extraUsageCharge);
+        planFee = getPlanFee();
+        overageMinutes = getOverageMinutes();
 
-        calculateTotalBill(planFee,overageMinutes,extraUsageCharge, taxPercentage);
+        overageFee = getOverageFee(overageMinutes,extraUsageCharge);
+        tax = getTax(planFee,overageFee,taxPercentage);
+        calculateTotalBill(planFee,overageFee,tax);
+        scanner.close();
     }
 
     static double getPlanFee(){
@@ -44,12 +48,18 @@ public class PhoneBillCalculatorExercise {
         return overageFee;
     }
 
-    static double getTax(double planFee,double taxPercentage){
-        double tax = overageFee *  (taxPercentage);
-        return overageFee;
+    static double getTax(double planFee,double overageFee, double taxPercentage){
+        double tax = (planFee+overageFee)*  (taxPercentage/100);
+        return tax;
     }
 
-    static void calculateTotalBill(double planFee, int overageMinutes, double extraUsageCharge, double taxPercentage){
+    static void calculateTotalBill(double planFee, double overageFee, double tax){
 
+        double total = planFee + overageFee + tax;
+        System.out.println("Phone Bill:");
+        System.out.printf("Plan Fee: $%.2f %n",planFee);
+        System.out.printf("Overage Fee: $%.2f%n",overageFee);
+        System.out.printf("Tax: $%.2f%n",tax);
+        System.out.printf("Total: $%.2f%n", total);
     }
 }
