@@ -1,7 +1,6 @@
-package chapter4;
+package loops;
 
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * Created by Nahid Chowdhury

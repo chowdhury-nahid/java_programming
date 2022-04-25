@@ -1,4 +1,4 @@
-package chapter5;
+package methods.methods;
 
 import java.util.Scanner;
 

@@ -1,6 +1,5 @@
-package chapter5;
+package methods.variable_scope;
 
-import java.nio.channels.SeekableByteChannel;
 import java.util.Scanner;
 
 /**
